@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 import pandas as pd
-import pickle
+import joblib
 
 app = Flask(__name__, template_folder='templates')
 
 # Load the model and data
 with open('model_data.pkl', 'rb') as file:
-    model_data = pickle.load(file)
+    model_data = joblib.load(file)
 
 user_item_matrix = model_data['user_item_matrix']
 user_similarity_df = model_data['user_similarity_df']
